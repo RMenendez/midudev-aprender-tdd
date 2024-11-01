@@ -14,9 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Hello world
-      run: echo "Hello rmgworld!!"
-    - name: Dime la fecha
-      run: date
-    - name: Dame el contenido del directorio
-      run: ls -al
+    - uses: actions/setup-node@v4
+      with:
+        ode-version: 20.x
+        cache: 'npm'
+    - run: npm ci --legacy-peer-deps
+    - run: npm run build
